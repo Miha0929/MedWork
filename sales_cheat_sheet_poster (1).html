@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шпаргалка Оператора / Плакат Продажів</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    .copy-btn:active {
+      transform: scale(0.95);
+    }
+    .badge-risk {
+      background-color: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+    .badge-expand {
+      background-color: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar overflow-x-hidden">
+
+  <!-- TOP BAR -->
+  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-4 py-3 shadow-xl">
+    <div class="max-w-[1700px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-blue-600 to-indigo-500 p-2.5 rounded-xl shadow-lg shadow-blue-500/30">
+          <i class="fa-solid fa-headset text-2xl text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-black tracking-wide text-white uppercase flex items-center gap-2">
+            ПЛАКАТ ОПЕРАТОРА <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase font-bold">LIVE PRO</span>
+          </h1>
+          <p class="text-xs text-slate-400">Швидка орієнтація під час розмови | Суглоби • Тиск • Простатит • Вальгус</p>
+        </div>
+      </div>
+
+      <!-- Quick Global Search Bar -->
+      <div class="relative w-full md:w-96">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="text" id="searchInput" placeholder="Швидкий пошук (наприклад: Артроз, Ціна, Подумаю, Інсульт)..." 
+               class="w-full bg-slate-800/90 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+      </div>
+
+      <!-- Quick Nav Tabs Buttons -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+        <button onclick="switchTab('tab-ud')" class="tab-btn active bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 whitespace-nowrap transition-all shadow-md">
+          <i class="fa-solid fa-file-contract"></i> 1. Угода (УД)
+        </button>
+        <button onclick="switchTab('tab-objections')" class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 whitespace-nowrap transition-all">
+          <i class="fa-solid fa-comments"></i> 2. Заперечення
+        </button>
+        <button onclick="switchTab('tab-arthro')" class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 whitespace-nowrap transition-all">
+          <i class="fa-solid fa-bone text-amber-400"></i> 3. Артрофіксін
+        </button>
+        <button onclick="switchTab('tab-medical')" class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 whitespace-nowrap transition-all">
+          <i class="fa-solid fa-book-medical text-rose-400"></i> 4. Довідник (15 Оферів)
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- QUICK CALCULATOR FLOATING BANNER -->
+  <div class="bg-slate-800/80 border-b border-slate-700/60 px-4 py-2 text-xs">
+    <div class="max-w-[1700px] mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-amber-300 font-semibold">
+        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm"></i>
+        <span>ЗГОДА: Заборонено «НУ», «Постараюсь», «Напевно»! Тільки чітке: «ТАК / ВИКУПЛЮ / ПІДТВЕРДЖУЮ»</span>
+      </div>
+      <!-- Quick Calc Display -->
+      <div class="flex items-center gap-4 bg-slate-900/80 px-3 py-1 rounded-lg border border-slate-700/80 text-slate-300 font-mono">
+        <span>Курс + Крос (+350грн):</span>
+        <span class="text-emerald-400 font-bold">Відновл.: 3780₴</span> |
+        <span class="text-blue-400 font-bold">Профілакт.: 3240₴</span> |
+        <span class="text-purple-400 font-bold">Пробний: 2830₴</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-[1700px] mx-auto w-full p-4 flex-1">
+
+    <!-- TAB 1: БЛОК УГОДИ (УД) -->
+    <div id="tab-ud" class="tab-content block space-y-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- RULES OF AGREEMENT -->
+        <div class="bg-slate-800/80 border border-red-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-red-500/20 text-red-400 text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl border-l border-b border-red-500/30">
+            Критично
+          </div>
+          <h2 class="text-lg font-bold text-red-400 flex items-center gap-2 mb-4">
+            <i class="fa-solid fa-ban"></i> ПРАВИЛА ЗГОДИ (УД)
+          </h2>
+          
+          <div class="space-y-3">
+            <div class="bg-red-950/40 border border-red-500/30 p-3 rounded-xl">
+              <span class="text-red-400 font-bold text-xs uppercase block mb-1">❌ НЕ ПОДХОДЯТЬ ВІДПОВІДІ З «НУ»:</span>
+              <p class="text-slate-300 text-xs font-mono">«Ну так», «Ну добре», «Ну можливо»</p>
+              <span class="text-amber-400 text-[11px] font-semibold mt-1 block">➔ Обов'язково перепідтверджуємо!</span>
+            </div>
+
+            <div class="bg-red-950/40 border border-red-500/30 p-3 rounded-xl">
+              <span class="text-red-400 font-bold text-xs uppercase block mb-1">❌ НЕ ПОДХОДЯТЬ СУМНІВИ:</span>
+              <p class="text-slate-300 text-xs font-mono">«Постараюсь», «Напевно», «Якщо нічого не станеться»</p>
+              <span class="text-amber-400 text-[11px] font-semibold mt-1 block">➔ Потрібно добитися чіткої відповіді!</span>
+            </div>
+
+            <div class="bg-emerald-950/40 border border-emerald-500/40 p-3 rounded-xl">
+              <span class="text-emerald-400 font-bold text-xs uppercase block mb-1">✅ ЧІТКІ ПІДТВЕРДЖЕННЯ:</span>
+              <div class="flex flex-wrap gap-1.5 mt-1">
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Так</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Куплю</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Викуплю</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Підтверджую</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Заберу</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Звісно</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded font-bold border border-emerald-500/30">Окей / Хорошо</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOVA POSHTA & COURIER -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5 shadow-xl space-y-4">
+          <h2 class="text-lg font-bold text-blue-400 flex items-center gap-2">
+            <i class="fa-solid fa-truck-fast"></i> ОФОРМЛЕННЯ ДОСТАВКИ
+          </h2>
+
+          <!-- Nova Poshta Card -->
+          <div class="bg-slate-900/90 border border-slate-700 p-3.5 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-blue-300 uppercase flex items-center gap-1.5">
+                <i class="fa-solid fa-box text-red-500"></i> Нова Пошта
+              </span>
+              <button onclick="copyText('script-np')" class="copy-btn text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 px-2 py-1 rounded">
+                <i class="fa-solid fa-copy"></i> Скопіювати
+              </button>
+            </div>
+            <p id="script-np" class="text-xs text-slate-300 leading-relaxed font-sans bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              «Скасування замовлення буде неможливим, тому що я комплектую його та передаю в службу доставки одразу. Ви під запис телефонної розмови підтверджуєте, що викупите замовлення на суму <span class="text-amber-300 font-bold">[СУМА]</span> + доставка за тарифами Нової Пошти, коли воно надійде у відділення?»
+            </p>
+          </div>
+
+          <!-- TTN Explanation -->
+          <div class="bg-slate-900/90 border border-slate-700 p-3.5 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-purple-300 uppercase flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved"></i> Інструктаж про ТТН
+              </span>
+              <button onclick="copyText('script-ttn')" class="copy-btn text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 px-2 py-1 rounded">
+                <i class="fa-solid fa-copy"></i> Скопіювати
+              </button>
+            </div>
+            <p id="script-ttn" class="text-xs text-slate-300 leading-relaxed font-sans bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              «На ваш реальний номер прийде SMS/Viber із номером ТТН. Отримати посилку ви зможете за останніми 4 цифрами цього номера, щоб ваші контактні дані були повністю захищені. Все зрозуміло?»
+            </p>
+          </div>
+
+          <!-- Courier Card -->
+          <div class="bg-slate-900/90 border border-slate-700 p-3.5 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-emerald-300 uppercase flex items-center gap-1.5">
+                <i class="fa-solid fa-motorcycle"></i> Кур'єрська Доставка
+              </span>
+              <button onclick="copyText('script-courier')" class="copy-btn text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 px-2 py-1 rounded">
+                <i class="fa-solid fa-copy"></i> Скопіювати
+              </button>
+            </div>
+            <p id="script-courier" class="text-xs text-slate-300 leading-relaxed font-sans bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              «Ви під запис телефонної розмови підтверджуєте, що викупите замовлення на суму <span class="text-amber-300 font-bold">[СУМА]</span> + доставка 200 грн, коли кур'єр його доставить?»
+            </p>
+          </div>
+        </div>
+
+        <!-- CROSS-SELL & BRAND PROTECTION -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5 shadow-xl space-y-4">
+          <h2 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-cart-plus"></i> КРОС-ПРОДАЖ & БЕЗПЕКА (ББ)
+          </h2>
+
+          <!-- Cross sell -->
+          <div class="bg-slate-900/90 border border-amber-500/30 p-3.5 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-amber-300 uppercase">
+                🔥 Крос-продаж (Допродаж)
+              </span>
+              <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold">Знижка 80%</span>
+            </div>
+            <p class="text-xs text-slate-300 bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              «Також зобов'язаний повідомити про нашу новинку: це засіб <span class="text-amber-300 font-semibold">[Назва]</span> для <span class="text-amber-300 font-semibold">[Призначення]</span> зі знижкою 80%, всього за <span class="text-emerald-400 font-bold">350 грн</span>. Додати до замовлення?»
+            </p>
+            <div class="text-[11px] text-slate-400 bg-slate-800/50 p-2 rounded border border-slate-700/60 font-mono">
+              <strong>Перепідтвердження при згоді:</strong> «Тоді ваше замовлення — це програма з [X] упаковок + [Y] уп [Крос] на загальну суму [СУМА]. Ви підтверджуєте, викупити зможете?»
+            </div>
+          </div>
+
+          <!-- Brand Protection (ББ) -->
+          <div class="bg-slate-900/90 border border-slate-700 p-3.5 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-cyan-300 uppercase flex items-center gap-1.5">
+                <i class="fa-solid fa-lock"></i> Безпека Бренду (ББ)
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed font-sans bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              «Будь ласка, запишіть себе назву препарату та номер вашого замовлення (ID). Часто буває, що дзвонять інші компанії, видаючи себе за нас. Якщо дзвонять — запитуйте ID. Не зможуть назвати — одразу кладіть слухавку. Добре?»
+            </p>
+          </div>
+
+          <!-- Final Phrase -->
+          <div class="bg-emerald-950/30 border border-emerald-500/30 p-3.5 rounded-xl">
+            <span class="text-xs font-bold text-emerald-400 uppercase block mb-1"><i class="fa-solid fa-flag-checkered"></i> Фінальні слова:</span>
+            <p class="text-xs text-slate-200">
+              «Після отримання передзвоню для детального інструктажу. Ваше замовлення успішно оформлено. Дякую Вам, мирного неба, бережіть себе!»
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TAB 2: АЛГОРИТМ ТА ЗАПЕРЕЧЕННЯ -->
+    <div id="tab-objections" class="tab-content hidden space-y-6">
+      
+      <!-- 6-STEP UNIVERSAL ALGORITHM -->
+      <div class="bg-slate-800/90 border border-blue-500/30 rounded-2xl p-5 shadow-xl">
+        <h2 class="text-lg font-bold text-blue-400 flex items-center gap-2 mb-4">
+          <i class="fa-solid fa-diagram-project"></i> УНІВЕРСАЛЬНИЙ АЛГОРИТМ ПРОРОБКИ (6 КРОКІВ)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+          
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest block mb-1">Крок 1</span>
+              <h3 class="text-xs font-bold text-white mb-2">Прийняття позиції (Згода)</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«[Ім'я], чудово Вас розумію, для мене ціна/думка теж відіграє важливу роль…»</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Крок 2</span>
+              <h3 class="text-xs font-bold text-white mb-2">Аргументація</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«Враховуйте, що засіб високої якості, пройшов перевірки, додається сертифікат…»</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest block mb-1">Крок 3</span>
+              <h3 class="text-xs font-bold text-white mb-2">Точкова прив'язка</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«Дозволить усунути [Симптоми], не доведе до [Ускладнення], і 2-3 роки повертатися не доведеться.»</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Крок 4</span>
+              <h3 class="text-xs font-bold text-white mb-2">Націл (Закрите питання)</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«Ви саме на такий результат розраховували, ВІРНО?»</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Крок 5</span>
+              <h3 class="text-xs font-bold text-white mb-2">Відведення убік</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«За інструкцією 2 рази на день приймати препарат зможете?»</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-black text-rose-400 uppercase tracking-widest block mb-1">Крок 6</span>
+              <h3 class="text-xs font-bold text-white mb-2">Закриття у угоду</h3>
+              <p class="text-[11px] text-slate-300 leading-snug">«У такому разі підкажіть своє ПІБ / відділення НП як одержувача?»</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SPECIFIC OBJECTIONS GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- Objection: ПОДУМАЮ -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-brain"></i> «ПОДУМАЮ»
+            </span>
+            <button onclick="copyText('obj-think')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-think" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «[Ім'я], я Вас чудово розумію, що треба подумати, рішення потрібно приймати виважено, тут Вас підтримую. Проте підкажіть, подумати хочете над чим? Залишилися питання щодо якості чи за такою вартістю зараз важко пройти лікування?»
+          </p>
+        </div>
+
+        <!-- Objection: СУМНІВИ В ЯКОСТІ -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-cyan-300 flex items-center gap-2">
+              <i class="fa-solid fa-certificate"></i> «СУМНІВИ В ЯКОСТІ»
+            </span>
+            <button onclick="copyText('obj-quality')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-quality" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «Це нормально, Ви до нас вперше звертаєтеся. У посилці буде сертифікат якості (оригінальність, ефективність, натуральний склад). Ми як офіційна компанія дбаємо про репутацію. Важливо приймати без перепусток, щоб усунути [Симптоми] і не допустити [Ускладнення]. Ви ж за цим звернулися, правда? Після лікування зможете порадити нас своїм близьким? Тоді підкажіть № відділення НП?»
+          </p>
+        </div>
+
+        <!-- Objection: ПОРАДЖУСЯ З ЛІКАРЕМ -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-rose-300 flex items-center gap-2">
+              <i class="fa-solid fa-user-doctor"></i> «ПОРАДЖУСЯ З ЛІКАРЕМ»
+            </span>
+            <button onclick="copyText('obj-doctor')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-doctor" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «Розумію. А скільки років Ви вже спостерігаєтеся у свого лікаря? Давайте подивимося правді у вічі: за [Х] років немає позитивної динаміки, [Діагноз] лише прогресує. Аптеки та лікарі нерідко прописують стабілізатори, які лише тимчасово приховують симптоми та шкодять печінці й шлунку. Тут Ви проходите комплексне відновлення одноразово. Ви саме за таким результатом зверталися?»
+          </p>
+        </div>
+
+        <!-- Objection: ПОРАДЖУСЯ З ДРУЖИНОЮ / ЧОЛОВІКОМ -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-pink-300 flex items-center gap-2">
+              <i class="fa-solid fa-people-roof"></i> «ПОРАДЖУСЯ З БЛИЗЬКИМИ»
+            </span>
+            <button onclick="copyText('obj-wife')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-wife" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «Розумію, що потрібно порадитися з близькою людиною. При цьому це питання вашого особистого здоров'я. Впевнений, дружина/чоловік будуть тільки раді, якщо у вас нарешті пройдуть симптоми [Симптоми]. До того ж у посилці додається сертифікат якості. Ви ж до нас саме за таким результатом зверталися, правильно?»
+          </p>
+        </div>
+
+        <!-- Objection: ВЖЕ КУПУВАВ — НЕ ДОПОМОГЛО -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-purple-300 flex items-center gap-2">
+              <i class="fa-solid fa-xmark"></i> «ЗАМОВЛЯВ — НЕ ДОПОМОГЛО»
+            </span>
+            <button onclick="copyText('obj-failed')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-failed" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «Чудово розумію, зараз багато компаній-одноденок. Однак наш препарат пройшов клінічні випробування, є офіційний сертифікат. Попередні препарати лише приховували симптоми, не діючи на причину. Наш засіб усуне [Симптоми] та запобіжить [Ускладненням]. Ви ж на такий результат розраховували?»
+          </p>
+        </div>
+
+        <!-- Objection: ДОРОГО -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+            <span class="text-sm font-bold text-emerald-300 flex items-center gap-2">
+              <i class="fa-solid fa-sack-dollar"></i> «ДОРОГО» (Універсальна)
+            </span>
+            <button onclick="copyText('obj-expensive')" class="copy-btn text-[11px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-200">Скопіювати</button>
+          </div>
+          <p id="obj-expensive" class="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800">
+            «[Ім'я], для мене ціна теж відіграє важливу роль. Враховуйте високу якість та сертифікат. Це дозволить усунути [Симптоми] та запобігти [Ускладненням] без постійних повторних витрат. Розраховували саме на такий результат? За інструкцією 2 рази на день зможете приймати? Тоді підкажіть ПІБ одержувача?»
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TAB 3: ГОЛОВНИЙ СКРИПТ (АРТРОФІКСІН) -->
+    <div id="tab-arthro" class="tab-content hidden space-y-6">
+      
+      <!-- HEADER INFO CARD -->
+      <div class="bg-gradient-to-r from-amber-950/60 to-slate-900 border border-amber-500/30 rounded-2xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-xl">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl font-black text-amber-400">Артрофіксін</span>
+            <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold">ОФЕР СУГЛОБИ (0 грн акція)</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">
+            <strong>Прийом:</strong> 1 капсула 1 раз на день за 30 хв до їди (в уп. 10 капсул). | <strong>Виробник:</strong> ТОВ ВТФ «Фармаком», м. Харків.
+          </p>
+          <p class="text-xs text-slate-400 mt-0.5">
+            <strong>Склад:</strong> Гіалуронова кислота (низько- та високомолекулярна), лактоза, молочна сироватка, кальцій, аеросил.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-700 p-3 rounded-xl flex items-center gap-3">
+          <div class="text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Гаряча лінія</span>
+            <span class="text-sm font-mono font-bold text-emerald-400">0800312130</span>
+          </div>
+          <i class="fa-solid fa-phone-volume text-emerald-400 text-xl"></i>
+        </div>
+      </div>
+
+      <!-- SCRIPT FLOW PIPELINE -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
+        
+        <!-- STEP 1: QUALIFICATION & NEEDS -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3">
+          <div class="flex items-center gap-2 text-amber-400 font-bold border-b border-slate-700 pb-2">
+            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs">1</span>
+            <h3>Виявлення потреб (11 питань)</h3>
+          </div>
+
+          <ul class="text-xs text-slate-300 space-y-2 font-sans">
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">1. Заявку залишали? / 2. Зручно говорити?</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">3. Населений пункт та № Нової Пошти?</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">4. Для себе? / 5. Скільки років?</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">6. Болі в яких суглобах? (коліна, стегна, поперек)</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">7. Біль: гострий / ниючий / тупий?</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800 text-amber-300">
+              8. Хрускіт / клацання / набряки? <br>
+              <span class="text-[10px] text-slate-400">➔ Брак синовіальної рідини!</span>
+            </li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800 text-rose-300">
+              9. Стаж проблеми? (Місяці = початкова / >0.5 року = хронічна)
+            </li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800">10. Що приймали раніше? (знецінюємо аптечну хімію)</li>
+            <li class="bg-slate-900 p-2 rounded border border-slate-800 text-purple-300">
+              11. Судини: Оніміння кінцівок, судоми, варикоз?
+            </li>
+          </ul>
+
+          <div class="bg-amber-950/40 border border-amber-500/30 p-2.5 rounded-xl text-[11px] text-amber-200">
+            <strong>Короткий підсумок:</strong> «Вам [Вік], проблема [Симптом] протягом [Років], потрібно зупинити деформацію суглобів, так?»
+          </div>
+        </div>
+
+        <!-- STEP 2: PRESENTATION -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3">
+          <div class="flex items-center gap-2 text-blue-400 font-bold border-b border-slate-700 pb-2">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-300 flex items-center justify-center text-xs">2</span>
+            <h3>Презентація препарату</h3>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-blue-300 font-bold block mb-1">Етап 1: Підготовчий (1-2 тижні)</span>
+              <p class="text-slate-300 text-[11px]">
+                Знімає запалення та біль. Вимагає збільшення споживання рідини.
+              </p>
+            </div>
+
+            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-emerald-300 font-bold block mb-1">Етап 2: Відновлення (До 85%)</span>
+              <p class="text-slate-300 text-[11px]">
+                Виводить сольові відкладення, відновлює хрящ та виробіток синовіальної рідини. Зупиняє клацання й хрускіт.
+              </p>
+            </div>
+
+            <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+              <span class="text-purple-300 font-bold block mb-1">Зворотній зв'язок:</span>
+              <p class="text-slate-300 text-[11px]">
+                «Дзвонитиму раз на 10-12 днів перевіряти динаміку. Запишіть гарячу лінію: 0800312130.»
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: PRICE OFFERS -->
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3 lg:col-span-2">
+          <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold">
+              <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xs">3</span>
+              <h3>Цінові пропозиції (Акційні курси)</h3>
+            </div>
+            <span class="text-[11px] text-slate-400">Пропонуємо 2 варіанти на вибір</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            
+            <!-- Course 1 -->
+            <div class="bg-slate-900 border border-emerald-500/40 p-3 rounded-xl flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold uppercase">1. Відновлювальний</span>
+                <h4 class="text-xs font-bold text-white mt-1">80 днів (8 упаковок)</h4>
+                <p class="text-[11px] text-slate-300 mt-1">4 уп. безкоштовно + 4 уп. зі знижкою 40%</p>
+                <p class="text-[11px] text-slate-400 mt-1">Закріплення результату до 7 років.</p>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-lg font-bold text-emerald-400 font-mono">3430 грн</span>
+              </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="bg-slate-900 border border-blue-500/40 p-3 rounded-xl flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded font-bold uppercase">2. Профілактичний</span>
+                <h4 class="text-xs font-bold text-white mt-1">60 днів (6 упаковок)</h4>
+                <p class="text-[11px] text-slate-300 mt-1">3 уп. безкоштовно + 3 уп. зі знижкою 40%</p>
+                <p class="text-[11px] text-slate-400 mt-1">Ремісія до 5 років.</p>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-lg font-bold text-blue-400 font-mono">2890 грн</span>
+              </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="bg-slate-900 border border-purple-500/40 p-3 rounded-xl flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-bold uppercase">3. Базовий / Пробний</span>
+                <h4 class="text-xs font-bold text-white mt-1">40 днів (4 упаковки)</h4>
+                <p class="text-[11px] text-slate-300 mt-1">2 уп. безкоштовно + 2 уп. зі знижкою 40%</p>
+                <p class="text-[11px] text-slate-400 mt-1">Динаміка до 3 років.</p>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-lg font-bold text-purple-400 font-mono">2480 грн</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+            <span class="text-xs font-bold text-amber-300 block mb-1">Відведення до закриття на курс:</span>
+            <p class="text-xs text-slate-200 font-sans">
+              «Ми займемося повноцінним відновленням із закріпленням. Почнемо з профілактичного чи з пробного курсу, щоб усунути [Симптоми]?»
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TAB 4: МЕДИЧНИЙ ДОВІДНИК (15 НАПРЯМКІВ) -->
+    <div id="tab-medical" class="tab-content hidden space-y-4">
+      
+      <!-- Filter buttons for diseases -->
+      <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-800" id="medicalFilters">
+        <button onclick="filterMedical('all')" class="med-filter-btn active bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">Усі (15)</button>
+        <button onclick="filterMedical('суглоби')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">🦴 Суглоби</button>
+        <button onclick="filterMedical('тиск')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">❤️ Тиск</button>
+        <button onclick="filterMedical('простатит')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">🚹 Простатит & Потенція</button>
+        <button onclick="filterMedical('жіноче')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">🚺 Жіноче</button>
+        <button onclick="filterMedical('зір')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">👁 Зір</button>
+        <button onclick="filterMedical('грибок')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">🍄 Грибок & Вальгус</button>
+        <button onclick="filterMedical('діабет')" class="med-filter-btn bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-700">🩺 Діабет & Інші</button>
+      </div>
+
+      <!-- CARDS CONTAINER GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="medicalCardsGrid">
+
+        <!-- CARD 1: СУГЛОБИ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="суглоби">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest block">Напрямок 1</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🦴 Суглоби</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Артрологен, Артролайф, Остеофікс...</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Термін:</strong> <span class="text-amber-300">Синовіальна рідина</span> — міжсуглобове мастило.</p>
+            <p><strong>Діагнози:</strong> Артроз (руйнування хряща), Артрит (запалення), Коксартроз (кульшовий), Остеохондроз (хребет).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Операція із заміни суглоба (~180 тис. грн), повна нерухомість.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Перетискання судин ➔ варикоз, тромбофлебіт, гангрена (питаємо про судоми, набряки).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: ТИСК / СЕРЦЕ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="тиск">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-rose-400 font-bold uppercase tracking-widest block">Напрямок 2</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">❤️ Тиск / Серце</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Біпрохіл, Кардіхіл</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Термін:</strong> Норма 120/80. Криз &gt; 180.</p>
+            <p><strong>Діагнози:</strong> Гіпертонія (1 ст: 130–160; 2 ст: 160–180; 3 ст: &gt;180), Гіпотонія (&lt;110/70), Аритмія, Тахікардія.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Інсульт (загибель тканин мозку) або Інфаркт (блокування артерії).
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Шум у вухах/мушки ➔ порушення кровообігу мозку (втрата зору/пам'яті); Оніміння ➔ тромби, артроз.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: ПОТЕНЦІЯ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="простатит">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-blue-400 font-bold uppercase tracking-widest block">Напрямок 3</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🚹 Потенція</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Менолід, ПотенАП, Ерофакс</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Симптоми:</strong> Млявість, осічки, короткий акт (&lt;5 хв).</p>
+            <p><strong>Діагнози:</strong> Еректильна дисфункція, Імпотенція.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Повна імпотенція, розвиток простатиту через зашлакованість судин малого таза.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Забиті сечовипускальні канали ➔ часті позиви, слабкий струмінь (простатит).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: ПРОСТАТИТ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="простатит">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest block">Напрямок 4</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🚹 Простатит</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Омніпрост, Аденолід, Простопотен</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Симптоми:</strong> Нічні позиви, болі/різі, слабкий струмінь.</p>
+            <p><strong>Діагнози:</strong> Простатит (гострий/хронічний), Аденома простати (доброякісна пухлина).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Рак простати ➔ операція з видалення (повна імпотенція).
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Зниження рівня тестостерону ➔ слабка ерекція, спади збудження.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: ЖІНОЧЕ ЗДОРОВ'Я -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="жіноче">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-pink-400 font-bold uppercase tracking-widest block">Напрямок 5</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🚺 Жіноче Здоров'я</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">УроЛікс, УріноКонтроль</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Симптоми:</strong> Підтікання при кашлі/чханні, різі, позиви.</p>
+            <p><strong>Діагнози:</strong> Цистит, Нетримання сечі (стресове/ургентне), Молочниця.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Ослаблення м'язів малого таза ➔ опущення та випадіння матки.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Інфекції ➔ постійний цистит (болі) або молочниця (свербіж, печіння).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6: СХУДНЕННЯ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="діабет">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest block">Напрямок 6</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">⚖️ Схуднення</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Ліпосайз, Фітосайз, Фітонормал</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Терміни:</strong> Вісцеральний жир (на органах), Підшкірний жир.</p>
+            <p><strong>Діагноз:</strong> Ожиріння.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Критичне навантаження на серце, задишка, руйнування колін, ц. діабет.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 7: ГРИБОК -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="грибок">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-yellow-400 font-bold uppercase tracking-widest block">Напрямок 7</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🍄 Грибок</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Svampgel, Екзостоп, Мікореліф</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Терміни:</strong> Міцелій (корінь/спори), Оніхомікоз (нігті), Дерматомікоз (шкіра).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Деформація та розшарування ➔ нагноєння нігтя.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Мутагенні штами ➔ папіломи (рак), сечостатевий грибок, ураження судин.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 8: ВАЛЬГУС -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="грибок">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-orange-400 font-bold uppercase tracking-widest block">Напрямок 8</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🦶 Вальгус</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Вальгуфаст (крем)</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Стадії:</strong> 2-га (нахил) ➔ 3-тя (торкається) ➔ 4-та (заходить на/під палець).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Поперечна плоскостопість, відмирання тканин ➔ ампутація пальця/стопи.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Неправильний розподіл ваги ➔ артроз колінного та кульшового суглобів.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 9: ЗІР -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="зір">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest block">Напрямок 9</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">👁 Зір</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Офтальмізол, Оптілікс</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Діагнози:</strong> Міопія (короткозорість), Гіперметропія (далекозорість).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Катаракта (плівка/помутніння ➔ операція ~40 тис.грн); Глаукома (очний тиск ➔ сліпота).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 10: ГЕМОРОЙ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="діабет">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-purple-400 font-bold uppercase tracking-widest block">Напрямок 10</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🩺 Геморой</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Проктолід, Проктолайф</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Симптоми:</strong> Кровотеча, свербіж, шишки/вузли.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Хронічні бактерії ➔ рак прямої кишки.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Закупорка судин ➔ варикозне розширення вен ніг, тромби.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 11: ПАРАЗИТИ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="діабет">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-lime-400 font-bold uppercase tracking-widest block">Напрямок 11</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🦠 Паразити & ВПЛ</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Токсилід, Гетоксин, Детоксид</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Діагнози:</strong> ВПЛ (вірус папіломи), Гельмінтоз.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Глисти отруюють організм та активують ВПЛ ➔ злоякісні пухлини (рак).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 12: ВАРИКОЗ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="суглоби">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest block">Напрямок 12</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🩸 Варикоз</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">ВейнСейв</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Тромбоз, трофічні виразки ➔ гангрена та ампутація кінцівки.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Брак живлення через забиті судини ➔ руйнування суглобів (артроз).
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 13: ДІАБЕТ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="діабет">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-teal-400 font-bold uppercase tracking-widest block">Напрямок 13</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🩺 Цукровий Діабет</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Ендосулін, Діаклін, Гліколікс</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Типи:</strong> 1 тип (інсулін), 2 тип (таблетки).</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Діабетична стопа (ампутація) або діабетична кома (летальний кінець).
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Густа кров ➔ гіпертонія, інфаркт, катаракта та повна втрата зору.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 14: ПСОРОІАЗ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="жіноче">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest block">Напрямок 14</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">🧬 Псоріаз</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Псоріклін, Псорітон</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Розростання псоріатичних клітин ➔ меланома (рак) або пересадка шкіри.
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Ускладнення на імунітет ➔ псоріатичний артрит суглобів.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 15: СЛУХ -->
+        <div class="med-card bg-slate-800/80 border border-slate-700 rounded-2xl p-4 space-y-3" data-category="зір">
+          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+            <div>
+              <span class="text-[10px] text-yellow-300 font-bold uppercase tracking-widest block">Напрямок 15</span>
+              <h3 class="text-base font-bold text-white flex items-center gap-2">👂 Слух</h3>
+            </div>
+            <span class="text-[10px] bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-mono">Лорабіон</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2">
+            <p><strong>Діагноз:</strong> Туговухість.</p>
+            <div class="badge-risk p-2.5 rounded-xl text-[11px]">
+              <strong>⚠️ Загострення:</strong> Повна втрата слуху або запалення головного мозку (при гнійних виділеннях).
+            </div>
+            <div class="badge-expand p-2.5 rounded-xl text-[11px]">
+              <strong>🔄 Розширення:</strong> Порушення кровообігу мозку ➔ погіршення зору, пам'яті, тиск.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION FOR COPY ACTION -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-emerald-500 text-slate-950 px-4 py-2.5 rounded-xl shadow-2xl font-bold text-xs flex items-center gap-2 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+    <i class="fa-solid fa-circle-check text-base"></i>
+    <span>Текст успішно скопійовано!</span>
+  </div>
+
+  <script>
+    // TAB SWITCHING FUNCTION
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+
+      document.getElementById(tabId).classList.remove('hidden');
+      
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+        activeBtn.classList.add('active', 'bg-blue-600', 'text-white');
+      }
+    }
+
+    // COPY TO CLIPBOARD WITH TOAST
+    function copyText(elementId) {
+      const textToCopy = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast('Текст скопійовано в буфер!');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.querySelector('span').innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2000);
+    }
+
+    // FILTER MEDICAL CARDS BY CATEGORY
+    function filterMedical(category) {
+      document.querySelectorAll('.med-filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+
+      event.target.classList.remove('bg-slate-800', 'text-slate-300');
+      event.target.classList.add('active', 'bg-blue-600', 'text-white');
+
+      const cards = document.querySelectorAll('.med-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // GLOBAL LIVE SEARCH
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase().trim();
+      if (query === '') {
+        // Reset medical filter
+        filterMedical('all');
+        return;
+      }
+
+      // Automatically switch to medical tab if search query matches medical terms, or just filter visible elements
+      const cards = document.querySelectorAll('.med-card');
+      let foundInMedical = false;
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.classList.remove('hidden');
+          foundInMedical = true;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (foundInMedical) {
+        switchTab('tab-medical');
+      }
+    });
+  </script>
+</body>
+</html>
